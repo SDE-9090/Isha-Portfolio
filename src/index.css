@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+@layer base {
+  :root {
+    --bg-main: #FFF8FA;
+    --bg-alt: #FDF2F5;
+    --bg-surface: #ffffff;
+    --text-main: #292329;
+    --text-inverted: #ffffff;
+    --color-primary-pink: #E88BA8;
+    --color-soft-pink: #F7DCE5;
+    --color-accent-pink: #C65F83;
+  }
+
+  .dark {
+    --bg-main: #141113;
+    --bg-alt: #1a1618;
+    --bg-surface: #1e191b;
+    --text-main: #FFF8FA;
+    --text-inverted: #292329;
+    --color-primary-pink: #C65F83;
+    --color-soft-pink: #4a2835;
+    --color-accent-pink: #E88BA8;
+  }
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+}
+
+/* View Transitions for Theme Toggle */
+::view-transition-group(root) {
+  animation-duration: 1.2s;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+@layer base {
+  body {
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--color-primary-pink);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+  transition: transform 0.2s ease;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor.hovering {
+  transform: translate(-50%, -50%) scale(2.5);
+  background-color: var(--color-soft-pink);
+  mix-blend-mode: normal;
+  border: 1px solid var(--color-primary-pink);
+}
+
+@media (max-width: 768px) {
+  .custom-cursor {
+    display: none;
+  }
+}
