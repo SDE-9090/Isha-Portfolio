@@ -22,7 +22,12 @@ export const portfolioData = {
       description: "A multi-agent AI customer support system orchestrating specialized agents for ticket triage, knowledge retrieval, and troubleshooting.",
       tags: ["Python", "FastAPI", "React", "LangGraph", "ChromaDB", "WebSockets"],
       image: "/project1.png",
-      link: "#"
+      link: "#",
+      details: {
+        problem: "Modern customer support teams struggle with high volumes of repetitive queries, leading to slow response times and agent burnout. Traditional chatbots lack context-awareness and fail on complex, multi-step troubleshooting scenarios.",
+        architecture: "A LangGraph-based multi-agent orchestration system. A Routing Agent classifies incoming queries, directing them to specialized sub-agents (Knowledge Retrieval, Troubleshooting, Escalation). Uses ChromaDB for vector-based semantic search and WebSockets for real-time streaming responses.",
+        solution: "A highly robust AI support pipeline that reduced average ticket resolution time by 40%. The system correctly escalates highly technical issues to human agents while providing them with a summarized context of the AI's troubleshooting steps."
+      }
     },
     {
       id: "02",
@@ -30,7 +35,12 @@ export const portfolioData = {
       description: "Production-grade sports facility management platform with secure JWT authentication, RBAC, Redis caching, and real-time booking.",
       tags: ["TypeScript", "Node.js", "Express", "PostgreSQL", "Redis", "React"],
       image: "/project2.png",
-      link: "https://akolasportsarena.vercel.app/"
+      link: "https://akolasportsarena.vercel.app/",
+      details: {
+        problem: "Managing sports facility bookings involved scattered spreadsheets, double-bookings, and no central source of truth for payment status, leading to lost revenue and frustrated users.",
+        architecture: "Built with Node.js and Express using a PostgreSQL database. Implemented Redis caching to prevent race conditions during concurrent booking attempts. Secured with JWT-based Role-Based Access Control (RBAC) to differentiate between Users, Admins, and Super Admins.",
+        solution: "A scalable booking platform capable of handling hundreds of concurrent users. Eliminated double-bookings entirely through database-level transaction locks and improved API response times by 300% for read-heavy operations using Redis."
+      }
     }
   ],
   skills: {

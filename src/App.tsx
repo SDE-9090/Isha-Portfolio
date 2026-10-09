@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Lenis from 'lenis';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
@@ -16,6 +16,13 @@ import Footer from './components/Footer';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -82,6 +89,15 @@ function App() {
   return (
     <>
       <div id="custom-cursor" className="custom-cursor"></div>
+      <div className="noise-overlay"></div>
+      
+      {/* Scroll Progress Indicator */}
+      {!loading && (
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-[2px] bg-[#C65F83] origin-left z-[9999]"
+          style={{ scaleX }}
+        />
+      )}
       
       {loading ? (
         <Preloader />

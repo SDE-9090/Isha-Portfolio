@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolio';
+import { TextReveal } from './animations';
 
 const words = ["Backend Engineer", "AI Enthusiast", "Problem Solver", "System Designer"];
 
@@ -17,14 +18,14 @@ const About: React.FC = () => {
   return (
     <section className="py-24 px-6 bg-[var(--bg-surface)]" id="about">
       <div className="max-w-7xl mx-auto">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+        <h2 
           className="font-serif text-5xl md:text-6xl text-[var(--text-main)] mb-20 text-center md:text-left"
         >
-          A little bit <span className="italic text-[#E88BA8]">about me...</span>
-        </motion.h2>
+          <TextReveal text="A little bit " />
+          <span className="italic text-[#E88BA8]">
+            <TextReveal text="about me..." delay={0.2} />
+          </span>
+        </h2>
 
         <div className="flex flex-col md:flex-row gap-16 items-center">
           {/* Left - Photo */}

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
+import ProjectModal from './ProjectModal';
 
 const Projects: React.FC = () => {
+  const [selectedProject, setSelectedProject] = useState<typeof portfolioData.projects[0] | null>(null);
+
   return (
     <section className="py-32 px-6 bg-[var(--bg-main)]" id="work">
       <div className="max-w-7xl mx-auto">
@@ -40,7 +43,10 @@ const Projects: React.FC = () => {
                 className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 md:gap-20 items-center group`}
               >
                 {/* Image Container */}
-                <div className="w-full md:w-3/5 overflow-hidden rounded-2xl relative shadow-sm transition-transform duration-500 group-hover:-translate-y-2 hover-trigger cursor-pointer">
+                <div 
+                  className="w-full md:w-3/5 overflow-hidden rounded-2xl relative shadow-sm transition-transform duration-500 group-hover:-translate-y-2 hover-trigger cursor-pointer"
+                  onClick={() => setSelectedProject(project)}
+                >
                   <div className="aspect-[4/3] w-full relative overflow-hidden">
                     <img 
                       src={project.image} 
@@ -80,19 +86,24 @@ const Projects: React.FC = () => {
                     ))}
                   </div>
 
-                  <a 
-                    href={project.link}
+                  <button 
+                    onClick={() => setSelectedProject(project)}
                     className="inline-flex items-center gap-2 uppercase tracking-widest text-sm font-medium text-[var(--text-main)] hover:text-[#E88BA8] transition-colors hover-trigger w-max"
                   >
                     View Project
                     <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </a>
+                  </button>
                 </div>
               </motion.div>
             );
           })}
         </div>
       </div>
+
+      <ProjectModal 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
     </section>
   );
 };

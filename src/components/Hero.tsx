@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
+import { MagneticButton } from './animations';
 
 const Hero: React.FC = () => {
   return (
@@ -41,10 +42,22 @@ const Hero: React.FC = () => {
             <div className="w-12 md:w-16 h-[1px] bg-[var(--text-main)]/30"></div>
           </div>
           
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] text-[var(--text-main)] mb-6 md:mb-8 tracking-tight">
-            Building <span className="italic text-[#C65F83]">intelligent</span> systems. <br />
-            Solving complex problems. <br />
-            Creating things that <span className="italic text-[#C65F83]">matter.</span>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.15] text-[var(--text-main)] mb-6 md:mb-8 tracking-tight flex flex-col gap-1 md:gap-3">
+            <span className="block">
+              <motion.span initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }} className="inline-block">
+                Building <span className="italic text-[#C65F83]">intelligent</span> systems.
+              </motion.span>
+            </span>
+            <span className="block">
+              <motion.span initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }} className="inline-block">
+                Solving complex problems.
+              </motion.span>
+            </span>
+            <span className="block">
+              <motion.span initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }} className="inline-block">
+                Creating things that <span className="italic text-[#C65F83]">matter.</span>
+              </motion.span>
+            </span>
           </h1>
 
           {/* Mobile Image: Inserted inline below the headline */}
@@ -71,14 +84,18 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <a href="#work" className="group flex items-center justify-center gap-2 bg-[#d47693] text-[var(--text-inverted)] px-8 py-3.5 rounded-full font-medium hover:bg-[#C65F83] transition-colors duration-300 shadow-sm w-full sm:w-auto">
-              Explore My Work
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="#contact" className="group flex items-center justify-center gap-2 bg-transparent border border-[var(--text-main)]/20 text-[var(--text-main)] px-8 py-3.5 rounded-full font-medium hover:border-[var(--text-main)] transition-all duration-300 w-full sm:w-auto">
-              Let's Talk
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform opacity-60" />
-            </a>
+            <MagneticButton>
+              <a href="#work" className="group flex items-center justify-center gap-2 bg-[#d47693] text-[var(--text-inverted)] px-8 py-3.5 rounded-full font-medium hover:bg-[#C65F83] transition-colors duration-300 shadow-sm w-full sm:w-auto">
+                Explore My Work
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <a href="#contact" className="group flex items-center justify-center gap-2 bg-transparent border border-[var(--text-main)]/20 text-[var(--text-main)] px-8 py-3.5 rounded-full font-medium hover:border-[var(--text-main)] transition-all duration-300 w-full sm:w-auto">
+                Let's Talk
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform opacity-60" />
+              </a>
+            </MagneticButton>
           </div>
         </motion.div>
       </div>
